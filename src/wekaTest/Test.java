@@ -30,7 +30,6 @@ public class Test {
 	            {
 	              right++;//正确值加1
 	            }
-	            return;
 	        }
 	        System.out.println("J48 classification precision:"+(right/sum));
 	}
