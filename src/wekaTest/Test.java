@@ -11,25 +11,27 @@ public class Test {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		 Classifier m_classifier = new J48();
-	        File inputFile = new File("C://Program Files//Weka-3-8//data//cpu.with.vendor.arff");//ÑµÁ·ÓïÁÏÎÄ¼ş
+	        File inputFile = new File("C://Program Files//Weka-3-8//data//cpu.with.vendor.arff");//è®­ç»ƒè¯­æ–™æ–‡ä»¶
 	        ArffLoader atf = new ArffLoader(); 
 	        atf.setFile(inputFile);
-	        Instances instancesTrain = atf.getDataSet(); // ¶ÁÈëÑµÁ·ÎÄ¼ş    
-	        inputFile = new File("C://Program Files//Weka-3-8//data//cpu.with.vendor.arff");//²âÊÔÓïÁÏÎÄ¼ş
+	        Instances instancesTrain = atf.getDataSet(); // è¯»å…¥è®­ç»ƒæ–‡ä»¶    
+	        inputFile = new File("C://Program Files//Weka-3-8//data//cpu.with.vendor.arff");//æµ‹è¯•è¯­æ–™æ–‡ä»¶
 	        atf.setFile(inputFile);          
-	        Instances instancesTest = atf.getDataSet(); // ¶ÁÈë²âÊÔÎÄ¼ş
-	        instancesTest.setClassIndex(0); //ÉèÖÃ·ÖÀàÊôĞÔËùÔÚĞĞºÅ£¨µÚÒ»ĞĞÎª0ºÅ£©£¬instancesTest.numAttributes()¿ÉÒÔÈ¡µÃÊôĞÔ×ÜÊı
-	        double sum = instancesTest.numInstances(),//²âÊÔÓïÁÏÊµÀıÊı
+	        Instances instancesTest = atf.getDataSet(); // è¯»å…¥æµ‹è¯•æ–‡ä»¶
+	        instancesTest.setClassIndex(0); //è®¾ç½®åˆ†ç±»å±æ€§æ‰€åœ¨è¡Œå·ï¼ˆç¬¬ä¸€è¡Œä¸º0å·ï¼‰ï¼ŒinstancesTest.numAttributes()å¯ä»¥å–å¾—å±æ€§æ€»æ•°
+	        double sum = instancesTest.numInstances(),//æµ‹è¯•è¯­æ–™å®ä¾‹æ•°
 	        right = 0.0f;
 	        instancesTrain.setClassIndex(0);
 	 
-	        m_classifier.buildClassifier(instancesTrain); //ÑµÁ·            
-	        for(int  i = 0;i<sum;i++)//²âÊÔ·ÖÀà½á¹û
+	        m_classifier.buildClassifier(instancesTrain); //è®­ç»ƒ            
+	        for(int  i = 0;i<sum;i++)//æµ‹è¯•åˆ†ç±»ç»“æœ
 	        {
-	            if(m_classifier.classifyInstance(instancesTest.instance(i))==instancesTest.instance(i).classValue())//Èç¹ûÔ¤²âÖµºÍ´ğ°¸ÖµÏàµÈ£¨²âÊÔÓïÁÏÖĞµÄ·ÖÀàÁĞÌá¹©µÄĞëÎªÕıÈ·´ğ°¸£¬½á¹û²ÅÓĞÒâÒå£©
+	            if(m_classifier.classifyInstance(instancesTest.instance(i))==instancesTest.instance(i).classValue())//å¦‚æœé¢„æµ‹å€¼å’Œç­”æ¡ˆå€¼ç›¸ç­‰ï¼ˆæµ‹è¯•è¯­æ–™ä¸­çš„åˆ†ç±»åˆ—æä¾›çš„é¡»ä¸ºæ­£ç¡®ç­”æ¡ˆï¼Œç»“æœæ‰æœ‰æ„ä¹‰ï¼‰
 	            {
-	              right++;//ÕıÈ·Öµ¼Ó1
+	              right++;//æ­£ç¡®å€¼åŠ 1
 	            }
+		    else
+			    return;
 	        }
 	        System.out.println("J48 classification precision:"+(right/sum));
 	}
