@@ -28,7 +28,7 @@ public class Test {
 	        {
 	            if(m_classifier.classifyInstance(instancesTest.instance(i))==instancesTest.instance(i).classValue())//如果预测值和答案值相等（测试语料中的分类列提供的须为正确答案，结果才有意义）
 	            {
-	              right++;//正确值加1
+	              right++;//正确值加1  test
 	            }
 	        }
 	        System.out.println("J48 classification precision:"+(right/sum));
